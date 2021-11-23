@@ -1,4 +1,6 @@
 choice = input('Choose operation: 1 - Decimal to Binary: 2 - Binary to Decimal: 3 - Decimal to Octal: 4 - Octal to Decimal: 5 - Decimal to Hexadecimal: 6 - Hexadecimal to Decimal: ')
+# Typing 640 in octal to decimal somehow breaks it
+
 def binary(num):
     num = int(num)    
     ans = ''
