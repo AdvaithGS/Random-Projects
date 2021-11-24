@@ -1,4 +1,4 @@
-choice = input('Choose operation: 1 - Decimal to Binary: 2 - Binary to Decimal: 3 - Decimal to Octal: 4 - Octal to Decimal: 5 - Decimal to Hexadecimal: 6 - Hexadecimal to Decimal: 7 - Binary to Octal: 8 - Octal to Binary: ')
+choice = input('Choose operation: 1 - Decimal to Binary: 2 - Binary to Decimal: 3 - Decimal to Octal: 4 - Octal to Decimal: 5 - Decimal to Hexadecimal: 6 - Hexadecimal to Decimal: 7 - Binary to Octal: 8 - Octal to Binary: 9 - Binary to Hexadecimal: 10 - Hexadecimal to Binary: ')
 # Typing 640 in octal to decimal somehow breaks it
 
 def binary(n):
@@ -56,6 +56,8 @@ def hexadecimal(num):
             ans += alphabet[int(res)-10]
         else:
             ans += res
+    while ans[0] == '0':
+        ans = ans[1:]
     return ans
 
 def hexadecimal_to_decimal(num):
@@ -74,16 +76,6 @@ def hexadecimal_to_decimal(num):
                 ans += binary(alphabet.find(i) + 10)
     return binary_to_decimal(ans)
 
-def octal_to_binary(num):
-    num = str(num)
-    ans = binary(num[0])
-    for i in num[1:]:
-        bin = binary(i)
-        if len(bin) != 3:
-            ans += '0'*(3 - len(bin)%3) + bin
-        else:
-            ans += bin
-    return ans
             
 
 if choice == '1':
@@ -110,4 +102,16 @@ elif choice == '7':
     print(octal(num))
 elif choice == '8':
     num = int(input('Octal to Binary: Enter Number: '))
-    print(octal_to_binary(num))
+    print(binary(octal_to_decimal(num)))
+elif choice == '9':
+    num = int(input('Binary to Hexadecimal: Enter Number: '))
+    print(hexadecimal(num))
+elif choice == '10':
+    num = input('Hexadecimal to Binary: Enter Number: ')
+    print(binary(hexadecimal_to_decimal(num)))
+elif choice == '11':
+    num = int(input('Octal to Hexadecimal: Enter Number: '))
+    print(hexadecimal(binary(octal_to_decimal(num))))
+elif choice == '12':
+    num = input('Hexadecimal to Octal: Enter Number: ') 
+    print(octal(binary(hexadecimal_to_decimal(num))))
