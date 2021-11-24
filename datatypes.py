@@ -1,4 +1,4 @@
-choice = input('Choose operation: 1 - Decimal to Binary: 2 - Binary to Decimal: 3 - Decimal to Octal: 4 - Octal to Decimal: 5 - Decimal to Hexadecimal: 6 - Hexadecimal to Decimal: 7 - Binary to Octal: 8 - Octal to Binary: 9 - Binary to Hexadecimal: 10 - Hexadecimal to Binary: ')
+choice = input('Choose operation: \n 1. Decimal to Binary \n 2. Binary to Decimal \n 3. Decimal to Octal \n 4. Octal to Decimal \n 5. Decimal to Hexadecimal \n 6. Hexadecimal to Decimal \n 7. Binary to Octal \n 8. Octal to Binary \n 9. Binary to Hexadecimal \n 10. Hexadecimal to Binary \n 11. Octal to Hexadecimal \n 12. Hexadecimal to Octal \n --> ')
 # Typing 640 in octal to decimal somehow breaks it
 
 def binary(n):
