@@ -1,21 +1,23 @@
 choice = input('Choose operation: 1 - Decimal to Binary: 2 - Binary to Decimal: 3 - Decimal to Octal: 4 - Octal to Decimal: 5 - Decimal to Hexadecimal: 6 - Hexadecimal to Decimal: ')
 # Typing 640 in octal to decimal somehow breaks it
 
-def binary(num):
-    num = int(num)    
-    ans = ''
-    while num != 0:
-        i = 0
-        while 2**i <= num:
-            i += 1
-        ans += str(i)
-        num -= 2**(i-1)
-    result = '0'*(int(ans[0])+1)
-    for i in ans:
-        i = int(i)
-        result = result[:i] + '1' + result[i+1:]
-    result = result[::-1][:-1]
-    return result
+def binary(n):
+    if n != '0' and n != 0:
+        n = int(n)
+        ans = []
+        while n > 0:
+            i = 0
+            while 2**i <= n:
+                i += 1
+            n -= 2**(i-1)
+            i -= 1
+            ans.append(i)
+        result = '0'*(int(ans[0]) + 1)
+        for i in ans:
+            result = result[:i] + '1' + result[i+1:]
+    else:
+        result = '0'
+    return result[::-1]
 def binary_to_decimal(num):
     num = num[::-1]
     ans = 0
@@ -72,21 +74,21 @@ def hexadecimal_to_decimal(num):
                 ans += binary(alphabet.find(i) + 10)
     return binary_to_decimal(ans)
 if choice == '1':
-    num = int(input('Number: '))
+    num = int(input('Decimal to Binary: Enter Number: '))
     print(binary(num))
 
 elif choice ==  '2':
-    num = input('Number: ')
+    num = input('Binary to Decimal: Enter Number: ')
     print(binary_to_decimal(num))
 elif choice == '3':
-    num = int(input('Number: '))
+    num = int(input('Decimal to Octal: Enter Number: '))
     print(octal(int(binary(num))))
 elif choice == '4':
-    num = int(input('Number: '))
+    num = int(input('Octal to Decimal: Enter Number: '))
     print(octal_to_decimal(num))
 elif choice == '5':
-    num = int(input('Number: '))
+    num = int(input('Decimal to Hexadecimal: Enter Number: '))
     print(hexadecimal(int(binary(num))))
 elif choice == '6':
-    num = input('Number: ')
+    num = input('Hexadecimal to Decimal: Enter Number: ')
     print(hexadecimal_to_decimal(num))
