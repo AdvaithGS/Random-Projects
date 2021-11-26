@@ -1,4 +1,4 @@
-choice = input('Choose operation: \n 1. Decimal to Binary \n 2. Binary to Decimal \n 3. Decimal to Octal \n 4. Octal to Decimal \n 5. Decimal to Hexadecimal \n 6. Hexadecimal to Decimal \n 7. Binary to Octal \n 8. Octal to Binary \n 9. Binary to Hexadecimal \n 10. Hexadecimal to Binary \n 11. Octal to Hexadecimal \n 12. Hexadecimal to Octal \n --> ')
+
 # Typing 640 in octal to decimal somehow breaks it
 
 def binary(n):
@@ -32,6 +32,8 @@ def octal(num):
     num = '0'*(3 - len(num)%3) + num
     for i in range(len(num)//3):
         ans += str(binary_to_decimal(num[3*i:3*(i+1)]))
+    while ans[0] == '0':
+        ans = ans[1:]
     return ans
 
 def octal_to_decimal(num):
@@ -76,42 +78,41 @@ def hexadecimal_to_decimal(num):
                 ans += binary(alphabet.find(i) + 10)
     return binary_to_decimal(ans)
 
-            
-
-if choice == '1':
-    num = int(input('Decimal to Binary: Enter Number: '))
-    print(binary(num))
-
-elif choice ==  '2':
-    num = input('Binary to Decimal: Enter Number: ')
-    print(binary_to_decimal(num))
-elif choice == '3':
-    num = int(input('Decimal to Octal: Enter Number: '))
-    print(octal(int(binary(num))))
-elif choice == '4':
-    num = int(input('Octal to Decimal: Enter Number: '))
-    print(octal_to_decimal(num))
-elif choice == '5':
-    num = int(input('Decimal to Hexadecimal: Enter Number: '))
-    print(hexadecimal(int(binary(num))))
-elif choice == '6':
-    num = input('Hexadecimal to Decimal: Enter Number: ')
-    print(hexadecimal_to_decimal(num))
-elif choice == '7':
-    num = int(input('Binary to Octal: Enter Number: '))
-    print(octal(num))
-elif choice == '8':
-    num = int(input('Octal to Binary: Enter Number: '))
-    print(binary(octal_to_decimal(num)))
-elif choice == '9':
-    num = int(input('Binary to Hexadecimal: Enter Number: '))
-    print(hexadecimal(num))
-elif choice == '10':
-    num = input('Hexadecimal to Binary: Enter Number: ')
-    print(binary(hexadecimal_to_decimal(num)))
-elif choice == '11':
-    num = int(input('Octal to Hexadecimal: Enter Number: '))
-    print(hexadecimal(binary(octal_to_decimal(num))))
-elif choice == '12':
-    num = input('Hexadecimal to Octal: Enter Number: ') 
-    print(octal(binary(hexadecimal_to_decimal(num))))
+while True:            
+    choice = input('Choose operation: \n 1. Decimal to Binary \n 2. Binary to Decimal \n 3. Decimal to Octal \n 4. Octal to Decimal \n 5. Decimal to Hexadecimal \n 6. Hexadecimal to Decimal \n 7. Binary to Octal \n 8. Octal to Binary \n 9. Binary to Hexadecimal \n 10. Hexadecimal to Binary \n 11. Octal to Hexadecimal \n 12. Hexadecimal to Octal \n --> ')
+    if choice == '1':
+        num = int(input('Decimal to Binary: Enter Number: '))
+        print(binary(num))
+    elif choice ==  '2':
+        num = input('Binary to Decimal: Enter Number: ')
+        print(binary_to_decimal(num))
+    elif choice == '3':
+        num = int(input('Decimal to Octal: Enter Number: '))
+        print(octal(int(binary(num))))
+    elif choice == '4':
+        num = int(input('Octal to Decimal: Enter Number: '))
+        print(octal_to_decimal(num))
+    elif choice == '5':
+        num = int(input('Decimal to Hexadecimal: Enter Number: '))
+        print(hexadecimal(int(binary(num))))
+    elif choice == '6':
+        num = input('Hexadecimal to Decimal: Enter Number: ')
+        print(hexadecimal_to_decimal(num))
+    elif choice == '7':
+        num = int(input('Binary to Octal: Enter Number: '))
+        print(octal(num))
+    elif choice == '8':
+        num = int(input('Octal to Binary: Enter Number: '))
+        print(binary(octal_to_decimal(num)))
+    elif choice == '9':
+        num = int(input('Binary to Hexadecimal: Enter Number: '))
+        print(hexadecimal(num))
+    elif choice == '10':
+        num = input('Hexadecimal to Binary: Enter Number: ')
+        print(binary(hexadecimal_to_decimal(num)))
+    elif choice == '11':
+        num = int(input('Octal to Hexadecimal: Enter Number: '))
+        print(hexadecimal(binary(octal_to_decimal(num))))
+    elif choice == '12':
+        num = input('Hexadecimal to Octal: Enter Number: ') 
+        print(octal(binary(hexadecimal_to_decimal(num))))
