@@ -29,6 +29,8 @@ def octal(num):
     num = '0'*(3 - len(num)%3) + num
     for i in range(len(num)//3):
         ans += str(binary_to_decimal(num[3*i:3*(i+1)]))
+    while ans[0] == '0':
+        ans = ans[1:]
     return ans
 
 def octal_to_decimal(num):
@@ -116,7 +118,7 @@ elif choice == '3':
     print(f'Your score is {score}')
     while running:
         num = random.randrange(1,1000)
-        if input(f'Convert the following decimal number to octal: {num} --> ') == binary(num):
+        if input(f'Convert the following decimal number to octal: {num} --> ') == octal(binary(num)):
             score += 1
             print(f'Well done! You got the correct answer! You now have {score} points.')
         else:
@@ -133,7 +135,7 @@ elif choice == '4':
     print(f'Your score is {score}')
     while running:
         num = octal(binary(random.randrange(1,1000)))
-        if input(f'Convert the following octal number to decimal: {num} --> ') == binary(num):
+        if input(f'Convert the following octal number to decimal: {num} --> ') == octal_to_decimal(num):
             score += 1
             print(f'Well done! You got the correct answer! You now have {score} points.')
         else:
@@ -150,7 +152,7 @@ elif choice == '5':
     print(f'Your score is {score}')
     while running:
         num = random.randrange(1,1000)
-        if input(f'Convert the following decimal number to hex: {num} --> ') == binary(num):
+        if input(f'Convert the following decimal number to hex: {num} --> ') == hexadecimal(binary(num)):
             score += 1
             print(f'Well done! You got the correct answer! You now have {score} points.')
         else:
@@ -167,7 +169,7 @@ elif choice == '6':
     print(f'Your score is {score}')
     while running:
         num = hexadecimal(binary(random.randrange(1,1000)))
-        if input(f'Convert the following Hexadecimal number to decimal: {num} --> ') == binary(num):
+        if input(f'Convert the following Hexadecimal number to decimal: {num} --> ') == hexadecimal_to_decimal(num):
             score += 1
             print(f'Well done! You got the correct answer! You now have {score} points.')
         else:
@@ -184,11 +186,96 @@ elif choice == '7':
     print(f'Your score is {score}')
     while running:
         num = octal(binary(random.randrange(1,1000)))
-        if input(f'Convert the following Octal number to Binary: {num} --> ') == binary(num):
+        if input(f'Convert the following Octal number to Binary: {num} --> ') == binary(octal_to_decimal(num)):
             score += 1
             print(f'Well done! You got the correct answer! You now have {score} points.')
         else:
             print(f'Your answer is incorrect. The correct answer was {binary(octal_to_decimal(num))}')
+        play_again = input('Do you want to continue playing? Y/N or y/n or leave blank: ')
+        if play_again.lower() == 'y' or not play_again:
+            continue
+        else:
+            break
+elif choice == '8':
+    print('Binary to Octal!')
+    score = 0
+    running  = True
+    print(f'Your score is {score}')
+    while running:
+        num = binary(random.randrange(1,1000))
+        if input(f'Convert the following binary number to octal: {num} --> ') == octal(num):
+            score += 1
+            print(f'Well done! You got the correct answer! You now have {score} points.')
+        else:
+            print(f'Your answer is incorrect. The correct answer was {octal(num)}')
+        play_again = input('Do you want to continue playing? Y/N or y/n or leave blank: ')
+        if play_again.lower() == 'y' or not play_again:
+            continue
+        else:
+            break
+elif choice == '10':
+    print('Hexadecimal to Binary!')
+    score = 0
+    running  = True
+    print(f'Your score is {score}')
+    while running:
+        num = hexadecimal(binary(random.randrange(1,1000)))
+        if input(f'Convert the following Hexadecimal number to binary: {num} --> ') == binary(hexadecimal_to_decimal(num)):
+            score += 1
+            print(f'Well done! You got the correct answer! You now have {score} points.')
+        else:
+            print(f'Your answer is incorrect. The correct answer was {binary(hexadecimal_to_decimal(num))}')
+        play_again = input('Do you want to continue playing? Y/N or y/n or leave blank: ')
+        if play_again.lower() == 'y' or not play_again:
+            continue
+        else:
+            break
+elif choice == '9':
+    print('Binary to Hexadecimal!')
+    score = 0
+    running  = True
+    print(f'Your score is {score}')
+    while running:
+        num = binary(random.randrange(1,1000))
+        if input(f'Convert the following binary number to hexadecimal: {num} --> ') == hexadecimal(num):
+            score += 1
+            print(f'Well done! You got the correct answer! You now have {score} points.')
+        else:
+            print(f'Your answer is incorrect. The correct answer was {hexadecimal(num)}')
+        play_again = input('Do you want to continue playing? Y/N or y/n or leave blank: ')
+        if play_again.lower() == 'y' or not play_again:
+            continue
+        else:
+            break
+elif choice == '11':
+    print('Octal to Hexadecimal!')
+    score = 0
+    running  = True
+    print(f'Your score is {score}')
+    while running:
+        num = octal(binary(random.randrange(1,1000)))
+        if input(f'Convert the following Octal number to Hexadecimal: {num} --> ') == hexadecimal(binary(octal_to_decimal(num))):
+            score += 1
+            print(f'Well done! You got the correct answer! You now have {score} points.')
+        else:
+            print(f'Your answer is incorrect. The correct answer was {hexadecimal(binary(octal_to_decimal(num)))}')
+        play_again = input('Do you want to continue playing? Y/N or y/n or leave blank: ')
+        if play_again.lower() == 'y' or not play_again:
+            continue
+        else:
+            break
+elif choice == '12':
+    print('Hexadecimal to Octal!')
+    score = 0
+    running  = True
+    print(f'Your score is {score}')
+    while running:
+        num = hexadecimal(binary(random.randrange(1,1000)))
+        if input(f'Convert the following Hexadecimal number to Octal: {num} --> ') == octal(binary(hexadecimal_to_decimal(num))):
+            score += 1
+            print(f'Well done! You got the correct answer! You now have {score} points.')
+        else:
+            print(f'Your answer is incorrect. The correct answer was {octal(binary(hexadecimal_to_decimal(num)))}')
         play_again = input('Do you want to continue playing? Y/N or y/n or leave blank: ')
         if play_again.lower() == 'y' or not play_again:
             continue
