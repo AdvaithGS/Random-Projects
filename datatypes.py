@@ -78,7 +78,7 @@ def hexadecimal_to_decimal(num):
                 ans += binary(alphabet.find(i) + 10)
     return binary_to_decimal(ans)
 
-while True:            
+while True:
     choice = input('Choose operation: \n 1. Decimal to Binary \n 2. Binary to Decimal \n 3. Decimal to Octal \n 4. Octal to Decimal \n 5. Decimal to Hexadecimal \n 6. Hexadecimal to Decimal \n 7. Binary to Octal \n 8. Octal to Binary \n 9. Binary to Hexadecimal \n 10. Hexadecimal to Binary \n 11. Octal to Hexadecimal \n 12. Hexadecimal to Octal \n --> ')
     if choice == '1':
         num = int(input('Decimal to Binary: Enter Number: '))
