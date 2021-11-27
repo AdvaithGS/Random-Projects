@@ -99,13 +99,12 @@ score = 0
 running  = True
 print(colored(f'Your score is {score}','yellow'))
 while running:
-        if input(colored(f'Convert the following {index[1]}: {index[2]} --> ','cyan')) == str(index[3]):
+        if input(colored(f'Convert the following {index[1]}: {index[2]} --> ','magenta')) == str(index[3]):
             score += 1
             print(colored(f'Well done! You got the correct answer! You now have {score} points.','green'))
         else:
-            print(type(index[3]))
             print(colored(f'Your answer is incorrect. The correct answer was {index[3]}','red'))
-        play_again = input(colored('Do you want to continue playing? Y/N or y/n or leave blank: ','cyan'))
+        play_again = input(colored('Do you want to continue playing? Y/N or y/n or leave blank: ','magenta'))
         if play_again.lower() == 'y' or not play_again:
             num = random.randrange(1,1000)
             operations  = [
