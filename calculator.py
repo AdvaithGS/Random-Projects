@@ -38,15 +38,15 @@ while True:
         while True:    
             choice = int(input('''Float Divide: 1,\nInteger Divide: 2,\nBack: 0\n--> '''))
             if choice == 1:
-                print(float(input('First number'))/float(input('Second number: ')))
+                print(float(input('First number: '))/float(input('Second number: ')))
                 break
             elif choice == 2:
-                print(int(input('First number'))//int(input('Second number: '))) 
+                print(int(input('First number: '))//int(input('Second number: '))) 
                 break
             elif choice == 0:
                 break
     elif choice == 5:
-        print(float(input('First number'))**float(input('Second number: '))) 
+        print(float(input('First number: '))**float(input('Second number: '))) 
     elif choice == 6:
         while True:
             choice = int(input('''Sin: 1,\nCos: 2,\nTan: 3\nBack: 0\n--> '''))
