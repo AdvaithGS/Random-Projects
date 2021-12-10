@@ -15,7 +15,7 @@ while True:
                 break
             sleep(1)
     elif choice == 2:
-        while True:    
+        while True:
             choice = int(input('''Float: 1,\nInteger: 2,\nBack: 0\n--> '''))
             if choice == 1:
                 print(float(input('First number: '))-float(input('Second number: ')))
@@ -58,12 +58,12 @@ while True:
             choice = int(input('''Sin: 1,\nCos: 2,\nTan: 3\nBack: 0\n--> '''))
             if choice == 1:
                 while True:
-                    choice = int(input('''Radians Gang: 1,\nDegrees gang: 2,\nBack: 0\n--> '''))
+                    choice = float(input('''Radians Gang: 1,\nDegrees gang: 2,\nBack: 0\n--> '''))
                     if choice == 1:
-                        print(sin(int(input('Enter value: '))))
+                        print(sin(float(input('Enter value: '))))
                         break
                     elif choice == 2:
-                        print(sin(radians(int(input('Enter value: ')))))
+                        print(sin(radians(float(input('Enter value: ')))))
                         break
                     elif choice == 0:
                         break
@@ -71,10 +71,10 @@ while True:
                 while True:
                     choice = int(input('''Radians Gang: 1,\nDegrees gang: 2,\nBack: 0\n--> '''))
                     if choice == 1:
-                        print(cos(int(input('Enter value: '))))
+                        print(cos(float(input('Enter value: '))))
                         break
                     elif choice == 2:
-                        print(cos(radians(int(input('Enter value: ')))))
+                        print(cos(radians(float(input('Enter value: ')))))
                         break
                     elif choice == 0:
                         break
@@ -82,10 +82,10 @@ while True:
                 while True:
                     choice = int(input('''Radians Gang: 1,\nDegrees gang: 2,\nBack: 0\n--> '''))
                     if choice == 1:
-                        print(tan(int(input('Enter value: '))))
+                        print(tan(float(input('Enter value: '))))
                         break
                     elif choice == 2:
-                        print(tan(radians(int(input('Enter value: ')))))
+                        print(tan(radians(float(input('Enter value: ')))))
                         break
                     elif choice == 0:
                         break
