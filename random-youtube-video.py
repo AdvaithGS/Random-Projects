@@ -1,3 +1,5 @@
+#55,680,485,254 tries before the program gets one, if every try takes one second, 
+#it takes 1765 years before a video is discovered. Good work ☺!
 from random import choice
 from requests import get
 alphabet = 'qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
@@ -18,5 +20,4 @@ while True:
         break
     else:
         remove.append(url) 
-
 print(url,"Video unavailable" in get(url).text)
