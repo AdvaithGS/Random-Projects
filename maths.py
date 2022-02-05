@@ -30,7 +30,7 @@ if n == 1:
                 print(f'Wrong. The correct answer was {x*y}')
         elif z == '/':
             x = random.randint(1,200)
-            while x/y != int(x/y):
+            while x%y == 0:
                 y = random.randint(1,x)
             if int(input(f'{x}/{y}: ')) == x/y:
                 print('Correct!')
