@@ -54,6 +54,7 @@ try:
                         req = requests.get(url).text
                         soup = BeautifulSoup(req,'lxml')
                         i = 1
+                        text = soup.find_all('p')[0].text
                         while len(text) < 100:
                             text = soup.find_all('p')[i].text
                             i += 1
@@ -62,7 +63,7 @@ try:
                         correct = True
                         break
             else:
-                print('Not found')
+                print('Not found 1')
                 correct = False
         if correct:
             url = f'https://api.wikimedia.org/core/v1/{website}/en/search/page'
@@ -71,15 +72,13 @@ try:
         try:
             image = 'https:' + loads(response.text)['pages'][0]['thumbnail']['url'].replace('/thumb','').rsplit('/',1)[0]
             webbrowser.open_new_tab(image)
-            req = requests.get('https://commons.wikimedia.org/wiki/File:' + image.rsplit('/',1)[-1]).text
-            print('https://commons.wikimedia.org/wiki/File:' + image.rsplit('/',1)[-1])
-            soup = BeautifulSoup(req,'lxml')
-            desc = soup.find('div',attrs = {'class':'wbmi-caption-value'}).text
+            desc = soup.find('div', attrs = {'class':'infobox-caption'}).text
             print(desc)
         except:
             image =  None
-except:
-    print('Not Found')
+except Exception as e:
+    print(e)
+    print('Not Found 2')
 
 
 
