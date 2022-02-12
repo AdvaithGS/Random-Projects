@@ -63,7 +63,7 @@ try:
                         correct = True
                         break
             else:
-                print('Not found 1')
+                print('Not found')
                 correct = False
         if correct:
             url = f'https://api.wikimedia.org/core/v1/{website}/en/search/page'
@@ -77,8 +77,7 @@ try:
         except:
             image =  None
 except Exception as e:
-    print(e)
-    print('Not Found 2')
+    print('Not Found')
 
 
 
