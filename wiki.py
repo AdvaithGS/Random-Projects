@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import webbrowser
 from os import environ
 
+l = ['moon','star','space','astro','cluster','galaxy','sky','planet','solar','science','physic','scientist']
 def clean(text):
     while '[' in text:
         text = text.replace(text[text.find('['):text.find(']',text.find('['))+1],'')
@@ -36,18 +37,18 @@ try:
             while len(text) < 100:
                 text = soup.find_all('p')[i].text
                 i += 1
-            l = ['moon','star','space','astro','cluster','galaxy','sky']
+            
             if any([z in text.lower() for z in l]):
                 text = clean(text)
                 print(text)
                 correct = True
             else:
                 print('Not a space topic')
+                print(url)
                 correct = False
         except:
-            if 'refer' in soup.find_all('p')[0].text or 'refer' in soup.find_all('p')[1].text:
+            if 'refer' in soup.find_all('p')[0].text or 'refer' in soup.find_all('p')[1].text or  'other' in soup.find_all('p')[0].text or 'other' in soup.find_all('p')[1].text:
                 for i in soup.find_all('a'):
-                    l = ['moon','star','space','astro','cluster','galaxy']
                     if any([z in i.text.lower() for z in l]):
                         search_query = i['href'][1:]
                         url = 'https://en.wikipedia.org/w/rest.php/v1/page' + i['href'][1:] + '/html'
@@ -62,9 +63,9 @@ try:
                         print(text)
                         correct = True
                         break
-            else:
-                print('Not found')
-                correct = False
+                else:
+                    print('Not found')
+                    correct = False
         if correct:
             url = f'https://api.wikimedia.org/core/v1/{website}/en/search/page'
             parameters = {'q': search_query, 'limit': number_of_results}
@@ -76,7 +77,7 @@ try:
             print(desc)
         except:
             image =  None
-except Exception as e:
+except:
     print('Not Found')
 
 
