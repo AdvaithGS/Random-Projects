@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import webbrowser
 from os import environ
 
-l = ['moon','star','space','astro','cluster','galaxy','sky','planet','solar','science','physic','scientist']
+l = ['atom','moon','star','space','astro','cluster','galaxy','sky','planet','solar','science','physic','scientist']
 def clean(text):
     while '[' in text:
         text = text.replace(text[text.find('['):text.find(']',text.find('['))+1],'')
