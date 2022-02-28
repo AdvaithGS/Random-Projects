@@ -10,7 +10,6 @@ def clean(text):
     while '[' in text:
         text = text.replace(text[text.find('['):text.find(']',text.find('['))+1],'')
     return text
-    
 
 try:        
         language_code = 'en'
@@ -21,13 +20,9 @@ try:
                 'Authorization': environ['api_key5'],
                 'User-Agent': 'Advaith'
                     }
-        #url = f'https://api.wikimedia.org/core/v1/{website}/en/page/{search_query}/bare'
-        #parameters = {'q': search_query, 'limit': number_of_results}
-        #response = requests.get(url, headers=headers)
         url = f'https://en.wikipedia.org/w/rest.php/v1/page/{search_query}/html'
         req = requests.get(url).text
         soup = BeautifulSoup(req,'lxml')
-        #print(loads(response.text)['html_url'])
         d = {}
         try:
             if 'refer to' in soup.find_all('p')[1].text:
