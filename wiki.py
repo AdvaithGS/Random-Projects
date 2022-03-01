@@ -68,7 +68,7 @@ try:
         try:
             image = 'https:' + loads(response.text)['pages'][0]['thumbnail']['url'].replace('/thumb','').rsplit('/',1)[0]
             webbrowser.open_new_tab(image)
-            desc = soup.find('div', attrs = {'class':'infobox-caption'}).text
+            desc = clean(soup.find('div', attrs = {'class':'infobox-caption'}).text)
             print(desc)
         except:
             image =  None
