@@ -5,12 +5,13 @@ from bs4 import BeautifulSoup
 import webbrowser
 from os import environ
 
+
 l = ['atom','moon','star','space','astro','cluster','galaxy','sky','planet','solar','science','physic','scientist']
 def clean(text):
     while '[' in text:
         text = text.replace(text[text.find('['):text.find(']',text.find('['))+1],'')
     return text
-
+not_space = False
 try:        
         language_code = 'en'
         search_query = input('Enter query: ')
@@ -35,11 +36,9 @@ try:
             
             if any([z in text.lower() for z in l]):
                 text = clean(text)
-                print(text)
                 correct = True
             else:
-                print('Not a space topic')
-                print(url)
+                not_space = True
                 correct = False
         except:
             if 'refer' in soup.find_all('p')[0].text or 'refer' in soup.find_all('p')[1].text or  'other' in soup.find_all('p')[0].text or 'other' in soup.find_all('p')[1].text:
@@ -55,11 +54,9 @@ try:
                             text = soup.find_all('p')[i].text
                             i += 1
                         text = clean(text) 
-                        print(text)
                         correct = True
                         break
                 else:
-                    print('Not found')
                     correct = False
         if correct:
             url = f'https://api.wikimedia.org/core/v1/{website}/en/search/page'
@@ -69,11 +66,18 @@ try:
             image = 'https:' + loads(response.text)['pages'][0]['thumbnail']['url'].replace('/thumb','').rsplit('/',1)[0]
             webbrowser.open_new_tab(image)
             desc = clean(soup.find('div', attrs = {'class':'infobox-caption'}).text)
-            print(desc)
         except:
             image =  None
 except:
-    print('Not Found')
+    pass
+try:
+    print(text,image,desc)
+except:
+    if not_space:
+        print('Not space')
+    else:
+        print('Not Found')
+
 
 
 
