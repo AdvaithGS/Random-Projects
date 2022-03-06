@@ -11,7 +11,6 @@ req = dict(req)
 for i in req:
     if i == x[5:]:
         print(f'Password Found: {s}')
-        print(i)
         print(f'Hash: {x}  Times Found: {req[i]}')
         break
 else:
