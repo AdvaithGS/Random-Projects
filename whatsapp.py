@@ -1,7 +1,7 @@
 import webbrowser
 import pyautogui as pgui
 import time
-#works only with a python file called documents
+#works only with a python file called contacts
 from contacts import contacts
 user = input('''Send message: 1
 Send message with image: 2 
