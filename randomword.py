@@ -13,9 +13,15 @@ def check(typ,x):
     if i['partOfSpeech'] == typ:
       return True
   return False
-  
 
-while not check(typ,x):
+l = []
+while len(l) < int(input('How many words?: ')):
   x = choice(list(words.keys()))
-
-print(x)
+  if check(typ,x):
+    l.append(x)
+for x in l:
+  res = loads(get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{x}').text)
+  try:
+    print(x,':',res[0]['meanings'][0]['definitions'][0]['definition'])
+  except:
+    print(x,None)
