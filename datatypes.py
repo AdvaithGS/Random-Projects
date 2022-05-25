@@ -123,5 +123,3 @@ while True:
         print(octal(binary(hexadecimal_to_decimal(num))))
     elif choice == '0':
         exit()
-    elif choice == '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':
-        print('You got the jackpot. Nice.')
