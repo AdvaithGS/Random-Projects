@@ -11,6 +11,7 @@ std::list<int, std::allocator<int>> get_pos(int* arr,int i,int j){
  for(int x = 0;x < 9;x++){
   l.remove_if([arr,i,x,j](int k){return (k == *(arr + 9*i + x) or k == *(arr + 9*x + j)); });
  };
+ approx = 
  return l;
 }
 
@@ -42,17 +43,13 @@ bool sudoku(int* map, int i, int j){
   
   for( int k : l){
    *(map + (9*i) + j) = k;
-   if ((sudoku(map,i + add(j), (j+1)%9 )) == 1){
-    return 1;
-   }else{
+   if ((sudoku(map,i + add(j), (j+1)%9 )) == 0){
     *(map + (9*i) + j) = 0;
-    continue;
-   }
-   if(k == l.back()){
-    std::cout << "Crisis: " << i << j << ": " << k;
+   }else{
+    return 1;
    }
   }
- return 1;
+ return 0;
 }
 };
 
