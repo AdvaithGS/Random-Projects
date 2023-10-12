@@ -3,27 +3,7 @@
 #include <algorithm>
 #include <array>
 
-int main(){
- std::cout << "Enter map" << '\n';
- int map[9][9];
- for(int i=0;i < 9;i++){
-  for(int j =0;j < 9;j++){
-   if(j == 0){
-    std::cout << '\n'; 
-   }
-   std::cin >> map[i][i];
-  }
- };
- sudoku(*map,0,0);
- int* i = *map;
- for(int j = 0;j< 81;j++){
-  if(j%9 == 0){
-   std::cout << '\n';
-  };
-  std::cout << *i << ' ';
 
- }
-}
 
 // We returned a list here
 std::list<int, std::allocator<int>> get_pos(int* arr,int i,int j){
@@ -35,13 +15,13 @@ std::list<int, std::allocator<int>> get_pos(int* arr,int i,int j){
 }
 
 
-int add(int i, int j){
+int add(int j){
  if((j+1)%9 < j){
   return 1;
  }else{
   return 0;
  }
-}
+};
 
 bool sudoku(int* map, int i, int j){
  if(i == 9){
@@ -49,20 +29,44 @@ bool sudoku(int* map, int i, int j){
  }
  if ((*(map + (9*i) + j)) != 0){
   // (j + 1)%9  i + ((j+1)%9 < (j))
-  return sudoku(map,i + add(i,j), (j+1)%9 );
+  return sudoku(map,i + add(j), (j+1)%9 );
  }else{
   std::list<int, std::allocator<int>> l = get_pos(map,i,j);
+  
   if (l.empty()){
    return 0;
   }
-  for( int i : l){
-   *(map + (9*i) + j) = i;
-   if ((sudoku(map,i + add(i,j), (j+1)%9 )) == 1){
+  
+  for( int k : l){
+   *(map + (9*i) + j) = k;
+   if ((sudoku(map,i + add(j), (j+1)%9 )) == 1){
+    std::cout << i << j << k;
     return 1;
    }else{
     *(map + (9*i) + j) = 0;
+    continue;
    }
   }
+ return 1;
+}
+};
+
+int main(){
+ std::cout << "Enter map" << '\n';
+ int map[9][9];
+ for(int i=0;i < 9;i++){
+  std::cin >> map[i][0] >> map[i][1] >> map[i][2] >> map[i][3] >> map[i][4] >> map[i][5] >> map[i][6] >> map[i][7] >> map[i][8];
+ };
+ sudoku(*map,0,0);
+ int* i = *map;
+ for(int j = 0;j< 81;j++){
+  if(j%27 == 0){
+   std::cout << "\n----------------------\n"; 
+  };
+  std::cout << *i << ' ';
+  i ++;
+  if((j+1)%3 == 0){
+    std::cout << "| ";
+  };
  }
 }
-
