@@ -1,12 +1,11 @@
 from requests import get
-from json import loads
 from random import choice
-words = loads(get('https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json').text)
+words = get('https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json').json()
 x = choice(list(words.keys()))
 typ = input('Type: ')
 def check(typ,x):
   try:
-    res = loads(get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{x}').text)[0]['meanings']
+    res = get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{x}').json()[0]['meanings']
   except:
     return False
   for i in res:
@@ -15,12 +14,13 @@ def check(typ,x):
   return False
 
 l = []
-while len(l) < int(input('How many words?: ')):
+n = int(input('How many words?: '))
+while len(l) < n:
   x = choice(list(words.keys()))
   if check(typ,x):
     l.append(x)
 for x in l:
-  res = loads(get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{x}').text)
+  res = get(f'https://api.dictionaryapi.dev/api/v2/entries/en/{x}').json()
   try:
     print(x,':',res[0]['meanings'][0]['definitions'][0]['definition'])
   except:
