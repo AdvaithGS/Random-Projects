@@ -5,3 +5,5 @@ def progress(done,total,length = 40):
   sys.stdout.write(arg)
   sys.stdout.flush()
   return arg
+
+##usage: use progress  = progress() and print with no newline character
