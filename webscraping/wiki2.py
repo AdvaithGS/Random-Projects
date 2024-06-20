@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from os import environ
 
 
+
 l = ['atom','moon','star','space','astro','cluster','galaxy','sky','planet','solar','science','physic','scientist']
 def clean(text):
     while '[' in text:
